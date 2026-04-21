@@ -1,0 +1,122 @@
+/* Reset & Base Pola Kertas Kusam */
+* {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Crimson Text", serif;
+  background-color: var(--paper, #f4f1ea);
+  background-image: radial-gradient(#dcd7ce 2px, transparent 2px);
+  background-size: 20px 20px;
+  color: #1a1a1a;
+}
+
+/* Tipografi Spesifik UI */
+.ui-text,
+button,
+input,
+textarea,
+nav,
+header h1,
+.calendar-day {
+  font-family: "Courier Prime", monospace !important;
+  text-transform: uppercase;
+}
+
+/* Neo-Brutalism Classes */
+.neo-border {
+  border: 3px solid #1a1a1a;
+}
+
+.neo-box {
+  background-color: #f4f1ea;
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-btn {
+  background-color: #f4f1ea;
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  color: #1a1a1a;
+  font-weight: bold;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+  cursor: pointer;
+}
+
+/* Interaksi Fisik Tombol */
+.neo-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #1a1a1a !important;
+}
+
+.neo-input {
+  background-color: #fff;
+  border: 3px solid #1a1a1a;
+  box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.05);
+}
+
+.neo-input:focus {
+  outline: none;
+  background-color: #f4f1ea;
+  border-color: #386641;
+}
+
+/* Khusus Tab Navigasi Bawah */
+.nav-tab {
+  border-top: 3px solid #1a1a1a;
+  border-right: 3px solid #1a1a1a;
+  background-color: #f4f1ea;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.nav-tab:last-child {
+  border-right: none;
+}
+
+.tab-active {
+  background-color: #1a1a1a !important;
+  color: #f4f1ea !important;
+}
+
+/* Tanda Kalender */
+.calendar-day.has-entry {
+  border: 2px solid #9e2a2b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(158, 42, 43, 0.1) 5px,
+    rgba(158, 42, 43, 0.1) 10px
+  );
+}
+
+.calendar-day.is-today {
+  background-color: #1a1a1a;
+  color: #f4f1ea;
+  font-weight: bold;
+}
+
+/* Sembunyikan scrollbar bawaan */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animasi Snappy */
+.modal {
+  display: none;
+}
+
+.modal.active {
+  display: flex;
+}

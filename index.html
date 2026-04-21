@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOSSIER: GRATITUDE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#1a1a1a",
+              paper: "#f4f1ea",
+              paperDark: "#dcd7ce",
+              stamp: "#9e2a2b",
+              moss: "#386641",
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="md:flex md:items-center md:justify-center min-h-screen">
+    <div
+      class="container mx-auto max-w-lg h-screen md:h-[720px] md:max-h-[90vh] flex flex-col p-4 md:p-6 md:relative bg-paper neo-border md:shadow-[12px_12px_0px_#1a1a1a]"
+    >
+      <div
+        class="absolute top-4 right-4 ui-text font-bold text-stamp transform rotate-12 border-2 border-stamp px-2 py-1 text-xs z-10 pointer-events-none hidden md:block"
+      >
+        [ CLASSIFIED ]
+      </div>
+
+      <header
+        class="flex justify-between items-center mb-6 flex-shrink-0 border-b-4 border-ink pb-4"
+      >
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">
+            > DOSSIER: GRATITUDE
+          </h1>
+          <p
+            id="watermark"
+            class="text-xs font-bold mt-1 cursor-pointer hover:bg-ink hover:text-paper inline-block px-1 border border-transparent transition-none"
+          >
+            [ ID: RAHMAD_SAINS ]
+          </p>
+        </div>
+      </header>
+
+      <main
+        class="flex-grow overflow-y-auto no-scrollbar pb-20 md:pb-16 flex flex-col relative z-0"
+      >
+        <div
+          id="quote-container"
+          class="neo-box p-4 mb-6 flex-shrink-0 relative"
+        >
+          <div
+            class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-paperDark border border-ink opacity-80"
+          ></div>
+
+          <p
+            id="quote-text"
+            class="text-center font-serif text-lg italic text-ink font-semibold"
+          >
+            "The little things? The little moments? They aren't little."
+          </p>
+          <p
+            id="quote-author"
+            class="ui-text text-center text-xs font-bold text-ink mt-4 border-t border-ink pt-2"
+          >
+            - JON KABAT-ZINN
+          </p>
+        </div>
+
+        <div id="views-container" class="flex-grow h-full">
+          <div id="journal-view" class="flex flex-col h-full view-section">
+            <h2
+              class="ui-text text-lg font-bold flex-shrink-0 mb-2 bg-ink text-paper inline-block px-2 py-1 self-start"
+              id="today-date"
+            ></h2>
+
+            <div class="neo-input flex-grow flex mb-4 relative p-1 mt-2">
+              <textarea
+                id="journal-input"
+                class="w-full h-full p-4 bg-transparent border-none focus:ring-0 resize-none font-serif text-lg leading-relaxed"
+                placeholder="[ KETIK LAPORAN SYUKUR HARI INI... (TEKAN '/' UNTUK FOKUS) ]"
+              ></textarea>
+            </div>
+
+            <button
+              id="save-button"
+              class="w-full neo-btn py-4 text-lg flex-shrink-0"
+            >
+              [ SIMPAN DATA ]
+            </button>
+          </div>
+
+          <div id="calendar-view" class="hidden view-section">
+            <div class="neo-box p-4">
+              <div
+                class="flex justify-between items-center mb-6 border-b-2 border-ink pb-4"
+              >
+                <button id="prev-month" class="neo-btn px-3 py-1">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2
+                  id="month-year"
+                  class="ui-text text-lg font-bold tracking-widest"
+                ></h2>
+                <button id="next-month" class="neo-btn px-3 py-1">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              <div
+                id="calendar-grid"
+                class="grid grid-cols-7 gap-2 text-center text-sm ui-text font-bold"
+              ></div>
+            </div>
+          </div>
+
+          <div id="recap-view" class="hidden view-section flex flex-col h-full">
+            <h2
+              class="ui-text text-xl font-bold mb-4 border-b-2 border-ink pb-2"
+            >
+              > ARSIP REKAPITULASI
+            </h2>
+            <div
+              id="recap-list"
+              class="space-y-4 h-full overflow-y-auto no-scrollbar pr-2 pb-4"
+            ></div>
+          </div>
+        </div>
+      </main>
+
+      <nav
+        class="fixed bottom-0 left-0 right-0 md:absolute max-w-lg mx-auto bg-paper ui-text font-bold"
+      >
+        <div
+          class="flex justify-around items-stretch h-16 border-t-4 border-ink"
+        >
+          <button
+            class="nav-tab flex-1 flex flex-col justify-center items-center gap-1 tab-active"
+            data-view="journal-view"
+          >
+            <span class="text-xs tracking-wider">[ JURNAL ]</span>
+          </button>
+          <button
+            class="nav-tab flex-1 flex flex-col justify-center items-center gap-1 text-ink"
+            data-view="calendar-view"
+          >
+            <span class="text-xs tracking-wider">[ KALENDER ]</span>
+          </button>
+          <button
+            class="nav-tab flex-1 flex flex-col justify-center items-center gap-1 text-ink"
+            data-view="recap-view"
+          >
+            <span class="text-xs tracking-wider">[ ARSIP ]</span>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="entry-modal"
+        class="modal fixed inset-0 bg-ink bg-opacity-90 items-center justify-center p-4 z-50"
+      >
+        <div
+          class="neo-box w-full max-w-md p-6 relative bg-paper text-ink border-4 border-ink"
+        >
+          <div
+            class="border-b-4 border-ink pb-2 mb-4 flex justify-between items-center"
+          >
+            <h3 id="modal-date" class="ui-text font-bold text-lg bg-mustard">
+              >
+            </h3>
+            <button
+              id="close-modal"
+              class="neo-btn px-2 py-1 text-sm bg-stamp text-paper"
+            >
+              [ X ]
+            </button>
+          </div>
+          <p
+            id="modal-text"
+            class="font-serif text-lg whitespace-pre-wrap max-h-[60vh] overflow-y-auto leading-relaxed border-l-4 border-ink pl-4"
+          ></p>
+        </div>
+      </div>
+
+      <div
+        id="watermark-modal"
+        class="modal fixed inset-0 bg-ink bg-opacity-90 items-center justify-center p-4 z-50"
+      >
+        <div
+          class="neo-box w-full max-w-xs p-6 relative bg-paper text-center border-4 border-ink"
+        >
+          <h3 class="ui-text font-bold mb-6 text-lg border-b-2 border-ink pb-2">
+            > ID PERSONNEL
+          </h3>
+          <div class="space-y-4">
+            <a
+              href="https://linktr.ee/rahmdsai"
+              target="_blank"
+              class="flex items-center justify-center w-full neo-btn py-3 bg-paperDark text-ink"
+            >
+              <i class="fas fa-tree mr-2"></i> [ LINKTREE ]
+            </a>
+            <a
+              href="https://instagram.com/rahmdsai"
+              target="_blank"
+              class="flex items-center justify-center w-full neo-btn py-3 bg-paperDark text-ink"
+            >
+              <i class="fab fa-instagram mr-2"></i> [ INSTAGRAM ]
+            </a>
+          </div>
+          <button
+            id="close-watermark-modal"
+            class="neo-btn px-6 py-2 mt-6 bg-stamp text-paper w-full"
+          >
+            [ TUTUP ]
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
